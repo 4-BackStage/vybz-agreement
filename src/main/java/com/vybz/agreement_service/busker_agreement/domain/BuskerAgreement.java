@@ -1,4 +1,4 @@
-package com.vybz.agreement_service.user_agreement.domain;
+package com.vybz.agreement_service.busker_agreement.domain;
 
 import com.vybz.agreement_service.common.entity.BaseEntity;
 import jakarta.persistence.*;
@@ -10,8 +10,8 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Table(name = "user_agreement")
-public class UserAgreement extends BaseEntity {
+@Table(name = "busker_agreement")
+public class BuskerAgreement extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +20,8 @@ public class UserAgreement extends BaseEntity {
     /**
      * 회원 UUID
      */
-    @Column(name = "user_uuid", nullable = false)
-    private String userUuid;
+    @Column(name = "busker_uuid", nullable = false)
+    private String buskerUuid;
 
     /**
      * 약관 id
@@ -36,9 +36,9 @@ public class UserAgreement extends BaseEntity {
     private Boolean agreed;
 
     @Builder
-    public UserAgreement(Long id, String userUuid, Long agreementId, Boolean agreed) {
+    public BuskerAgreement(Long id, String buskerUuid, Long agreementId, Boolean agreed) {
         this.id = id;
-        this.userUuid = userUuid;
+        this.buskerUuid = buskerUuid;
         this.agreementId = agreementId;
         this.agreed = agreed;
     }
