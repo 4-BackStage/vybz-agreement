@@ -2,6 +2,7 @@ package com.vybz.agreement_service.agreement.dto.request;
 
 import com.vybz.agreement_service.agreement.domain.Agreement;
 import com.vybz.agreement_service.agreement.domain.AgreementType;
+import com.vybz.agreement_service.agreement.domain.UserType;
 import com.vybz.agreement_service.agreement.vo.request.RequestUpdateAgreementVo;
 import lombok.Builder;
 import lombok.Getter;
@@ -14,13 +15,15 @@ public class RequestUpdateAgreementDto {
     private String title;
     private String content;
     private boolean required;
+    private UserType userType;
     private AgreementType agreementType;
 
     @Builder
-    public RequestUpdateAgreementDto(String title, String content, boolean required, AgreementType agreementType) {
+    public RequestUpdateAgreementDto(String title, String content, boolean required, UserType userType, AgreementType agreementType) {
         this.title = title;
         this.content = content;
         this.required = required;
+        this.userType = userType;
         this.agreementType = agreementType;
     }
 
@@ -30,6 +33,7 @@ public class RequestUpdateAgreementDto {
                 .title(title)
                 .content(content)
                 .required(required)
+                .userType(userType)
                 .agreementType(agreementType)
                 .build();
     }

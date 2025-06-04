@@ -36,6 +36,13 @@ public class Agreement extends SoftDeletableEntity {
     @Column(name = "required", nullable = false)
     private Boolean required;
 
+    /**
+     * 약관 대상
+     */
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_type", nullable = false)
+    private UserType userType;
+
    /**
      * 약관 종류
      */
@@ -44,11 +51,12 @@ public class Agreement extends SoftDeletableEntity {
     private AgreementType agreementType;
 
     @Builder
-    public Agreement(Long id, String title, String content, boolean required, AgreementType agreementType) {
+    public Agreement(Long id, String title, String content, Boolean required, UserType userType, AgreementType agreementType) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.required = required;
+        this.userType = userType;
         this.agreementType = agreementType;
     }
 
