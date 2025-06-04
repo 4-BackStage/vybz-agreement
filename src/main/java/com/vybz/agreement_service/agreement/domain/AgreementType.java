@@ -1,8 +1,10 @@
 package com.vybz.agreement_service.agreement.domain;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
 @Getter
+@RequiredArgsConstructor
 public enum AgreementType {
 
     MEMBER("회원 약관"),
@@ -13,7 +15,4 @@ public enum AgreementType {
 
     private final String description;
 
-    AgreementType(String description) {
-        this.description = description;
-    }
 }
