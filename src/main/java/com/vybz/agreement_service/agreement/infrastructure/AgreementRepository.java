@@ -2,6 +2,7 @@ package com.vybz.agreement_service.agreement.infrastructure;
 
 import com.vybz.agreement_service.agreement.domain.Agreement;
 import com.vybz.agreement_service.agreement.domain.AgreementType;
+import com.vybz.agreement_service.agreement.domain.UserType;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
@@ -32,5 +33,11 @@ public interface AgreementRepository extends JpaRepository<Agreement, Long> {
      * @param agreementType
      */
     List<Agreement> findByAgreementType(AgreementType agreementType);
+
+    /**
+     * 유저 타입으로 약관 조회
+     * @param userType
+     */
+    List<Agreement> findByUserType(UserType userType);
 
 }

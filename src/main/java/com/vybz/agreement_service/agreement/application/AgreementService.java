@@ -1,6 +1,7 @@
 package com.vybz.agreement_service.agreement.application;
 
 import com.vybz.agreement_service.agreement.domain.AgreementType;
+import com.vybz.agreement_service.agreement.domain.UserType;
 import com.vybz.agreement_service.agreement.dto.request.RequestAddAgreementDto;
 import com.vybz.agreement_service.agreement.dto.request.RequestDeleteAgreementDto;
 import com.vybz.agreement_service.agreement.dto.request.RequestUpdateAgreementDto;
@@ -21,6 +22,12 @@ public interface AgreementService {
      * @param title
      */
     ResponseAgreementDto getAgreementByTitle(String title);
+
+    /**
+     * 유저 타입으로 약관 리스트 조회
+     * @param userType
+     */
+    List<ResponseAgreementDto> getAgreementsByUserType(UserType userType);
 
     /**
      * 약관 타입으로 약관 리스트 조회

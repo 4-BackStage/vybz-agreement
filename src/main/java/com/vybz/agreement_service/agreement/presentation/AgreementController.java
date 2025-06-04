@@ -2,6 +2,7 @@ package com.vybz.agreement_service.agreement.presentation;
 
 import com.vybz.agreement_service.agreement.application.AgreementService;
 import com.vybz.agreement_service.agreement.domain.AgreementType;
+import com.vybz.agreement_service.agreement.domain.UserType;
 import com.vybz.agreement_service.agreement.dto.request.RequestAddAgreementDto;
 import com.vybz.agreement_service.agreement.dto.request.RequestDeleteAgreementDto;
 import com.vybz.agreement_service.agreement.dto.request.RequestUpdateAgreementDto;
@@ -50,12 +51,26 @@ public class AgreementController {
     }
 
     /**
+     * 유저 타입으로 약관 리스트 조회
+     * @param userType
+     */
+    @Operation(summary = "유저 타입으로 약관 리스트 조회 API", description = "유저 타입으로 약관 리스트 조회 API 입니다.", tags = {"Agreement-Service"})
+    @GetMapping("/user-type/{userType}")
+    public BaseResponseEntity<List<ResponseAgreementVo>> getAgreementsByUserType(@PathVariable("userType") UserType userType) {
+        List<ResponseAgreementVo> responseAgreementVo = agreementService.getAgreementsByUserType(userType)
+                .stream()
+                .map(ResponseAgreementDto::toVo)
+                .toList();
+        return new BaseResponseEntity<>(responseAgreementVo);
+    }
+
+    /**
      * 약관 타입으로 조회
      *
      * @param agreementType
      */
     @Operation(summary = "약관 타입으로 약관 리스트 조회 API", description = "약관 타입으로 약관 리스트 조회 API 입니다.", tags = {"Agreement-Service"})
-    @GetMapping("/type/{agreementType}")
+    @GetMapping("/agreement-type/{agreementType}")
     public BaseResponseEntity<List<ResponseAgreementVo>> getAgreementsByType(@PathVariable("agreementType") AgreementType agreementType) {
         List<ResponseAgreementVo> responseAgreementVo = agreementService.getAgreementsByType(agreementType)
                 .stream()
